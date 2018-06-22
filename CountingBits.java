@@ -2,6 +2,7 @@ public class CountingBits {
     public int[] countBits(int num) {
         int[] ret = new int[num+1];
         int n = 4;
+        int count = 0;
         boolean flag = true;
         for(int i = 0; i <= num; i++) {
             if(i < 4) {
@@ -21,7 +22,13 @@ public class CountingBits {
                                 flag = false;
                             }
                             else {
-                                ret[i] = ret[i - 4];
+                                if(i%24 == 0) {
+                                    ret[i] = ret[i - 4] - 1;
+                                    count++;
+                                }
+                                else {
+                                    ret[i] = ret[i - 4];
+                                }
                                 flag = true;
                             }
                         }
